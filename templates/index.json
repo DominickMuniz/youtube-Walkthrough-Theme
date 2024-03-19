@@ -81,10 +81,17 @@
       "settings": {
         "section_header": "Featured Collections"
       }
+    },
+    "new_3column_TBKnmW": {
+      "type": "new-3column",
+      "settings": {
+        "section_header": "Featured Collection"
+      }
     }
   },
   "order": [
     "image_banner",
-    "youtube_3column_6UfBhR"
+    "youtube_3column_6UfBhR",
+    "new_3column_TBKnmW"
   ]
 }
