@@ -2,7 +2,14 @@
 
 {
     "name": "Youtube 3 Column",
-    "settings": [],
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_header",
+            "label": "Section Header",
+            "default": "Featured Collection"
+        }
+    ],
     "presets": [{"name": "Youtube 3 Column" }]
 }
 
@@ -10,4 +17,4 @@
 {% endschema %} 
 
 
-<h1> Example Heading</h1>
+<h2 class="get-started-section-header">{{ section.settings.section_header }} </h2>
