@@ -64,8 +64,178 @@
         }]
 }
 
-
 {% endschema %} 
 
 
-<h2 class="get-started-section-header">{{ section.settings.section_header }} </h2>
+
+<div class="get-started-container"> 
+    <h2 class="get-started-section-header">{{ section.settings.section_header }} </h2>
+
+    <div class="get-started-row">
+        {% for block in section.blocks %}
+            <div class="get-started-block">
+                {% if block.settings.image %}
+                    <img loading="lazy" src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title }}" />
+                {% endif %}
+
+                <div class="get-started-text">
+                    <p class="get-started-title">{{ block.settings.title }}</p>
+                    <span class="get-started-subtitle">{{block.settings.subtitle }}</span>
+                    <a href="{{ block.settings.button_link }}" class="get-started-button">{{ block.settings.button_text}} </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<style>
+
+
+.get-started-section-header {
+  text-align: left;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.get-started-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0%;
+}
+
+@media only screen and (max-width: 600px) {
+  .get-started-row {
+    padding: 0 5%;
+  }
+}
+
+.get-started-block {
+  flex: 1 0 30%; /* flex-grow | flex-shrink | flex-basis */
+  margin: 1%;
+  position: relative;
+  overflow: hidden; /* Ensure the overlay covers the image */
+  border-radius: 20px;
+}
+
+.get-started-block img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.square img {
+  width: 100%;
+  height: auto;
+}
+
+.portrait img {
+  width: auto;
+  height: 100%;
+}
+
+.get-started-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Add semi-transparent overlay */
+  z-index: 1;
+}
+
+.get-started-text {
+  position: absolute;
+  bottom: 24px;
+  left: 24px; /* Added padding to the left */
+  color: white;
+  z-index: 2;
+}
+
+.get-started-text p,
+.get-started-text span {
+  margin-left: 24px; /* Added padding to the left */
+}
+
+.get-started-text p {
+  margin-bottom: 10px; /* Reduced space between title and subtitle */
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 52px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.get-started-text span {
+  margin-bottom: 20px; /* Increased space between subtitle and button */
+  font-size: 22px;
+  line-height: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.get-started-title,
+.get-started-subtitle {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.get-started-button {
+  display: flex; /* Changed from block to flex */
+  align-items: center; /* Centered text vertically */
+  justify-content: center; /* Centered text horizontally */
+  text-decoration: none; /* Removed underline */
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #181818;
+  background-color: white;
+  border-radius: 32px;
+  padding: 10px 20px;
+  z-index: 2;
+  margin-left: 24px;
+  margin-top: 16px;
+}
+
+.get-started-button img {
+  width: 20px; /* adjust as needed */
+  height: auto;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .get-started-block {
+    flex: 1 0 100%;
+  }
+}
+
+.get-started-container {
+  max-width: 1600px; /* you can set the maximum width of your content here */
+  margin: auto; /* this will center the container */
+  padding: 0 1%;
+}
+
+.get-started-block > div:first-child {
+  /* 75% of its parent's width */
+  height: 100%;
+  max-height: 550; /* takes the full height of its parent */
+  overflow: hidden; /* hide any overflow content */
+  margin: 0 auto; /* center the div if parent is wider */
+}
+.get-started-block > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.get-started-block {
+  max-height: 600px;
+}
+a.get-started-button {
+  width: 200px;
+}
+
+
+
+</style>
